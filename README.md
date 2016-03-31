@@ -12,7 +12,7 @@ You can choose to start with whichever tutorial you want to. If you've never wor
 
  We hope you enjoy the tutorials! Please provide feedback if there's anything that we can improve.
  
-  ***
+***
 **Don't have a kit yet?:** Click [here](http://azure.com/iotstarterkits)
 ***
 
@@ -148,6 +148,7 @@ Lastly we will also need the latest esp8266 Arduino library
 static const char ssid[] = "[Your WiFi network SSID or name]";
 static const char pass[] = "[Your WiFi network WPA password or WEP key]";
 ```
+
 - Replace the placeholders with your WiFi name (SSID), WiFi password, and the device connection string you created at the beginning of this tutorial. 
 - Save with `Control-s`
 
@@ -160,6 +161,7 @@ static const char* deviceKey = "[device-key]";
 static const char* hubName = "[hub-name]";
 static const char* hubSuffix = "azure-devices.net";
 ```
+
 - Save with `Control-s`
 
 ## 1.8 Build Your Remote Monitoring Sample
@@ -343,6 +345,7 @@ FROM
     TempSensors
 WHERE TemperatureReading>25 
 ```
+
 ***
 **Note:** You can change the `25` to `0` when you're ready to generate alerts to look at. This number represents the temperature in degrees celsius to check for when creating alerts. 25 degrees celsius is 77 degrees fahrenheit.
 ***
@@ -381,6 +384,7 @@ WHERE TemperatureReading>25
    - Windows and Mac installers can be found here: https://nodejs.org/en/download/
      - Ensure that you select the options to install NPM and add to your PATH.
    - Linux users can use the commands:
+
 ```
 sudo apt-get update
 sudo apt-get install nodejs
@@ -388,6 +392,7 @@ sudo apt-get install npm
 ``` 
 
 - Additionally, make sure you have cloned the project repository locally by issuing the following command in your desired directory:
+
 ```
 git clone https://github.com/Azure-Samples/iot-hub-c-raspberrypi-getstartedkit.git
 ```
@@ -416,11 +421,13 @@ bower install
 ```
 
 - Now it is time to run it! Enter the following command:
+
 ```
 node server.js
 ```
 
 - You should then see something similar to:
+
 ```
 app running on http://localhost:3000
 client connected
@@ -466,6 +473,7 @@ static const char ssid[] = "[Your WiFi network SSID or name]";
 static const char pass[] = "[Your WiFi network WPA password or WEP key]";
 static const char* connectionString = "[Device Connection String]";
 ```
+
 - Replace the placeholders with your WiFi name (SSID), WiFi password, and the device connection string you created at the beginning of this tutorial. 
 - Save with `Control-s`
 
