@@ -50,7 +50,7 @@ In this tutorial, you'll be doing the following:
 ### 1.2.1 Required Software
 
 - Arduino IDE, version 1.6.8. from www.arduino.cc (Earlier versions will not work with the AzureIoT library)
-- Sensor interface [library](https://github.com/adafruit/Adafruit_BME280_Library/archive/master.zip) from Adafruit
+- Sensor interface library from Adafruit
 
 ### 1.2.2 Required Hardware
 
@@ -233,7 +233,7 @@ This tutorial has the following steps:
 - [Git](https://git-scm.com/downloads) - For cloning the required repositories
 - [Node.js](https://nodejs.org) - For running the Node application
 - Arduino IDE, version 1.6.8. (Earlier versions will not work with the Azure IoT library)
-- Sensor interface [library](https://github.com/adafruit/Adafruit_DHT22_Library/archive/master.zip) from Adafruit. 
+- Sensor interface from Adafruit
 
 ### 2.2.2 Required Hardware
 - SparkFun Thingdev IoT kit
@@ -347,7 +347,7 @@ WHERE TemperatureReading>25
 ```
 
 ***
-**Note:** You can change the `25` to `0` when you're ready to generate alerts to look at. This number represents the temperature in degrees celsius to check for when creating alerts. 25 degrees celsius is 77 degrees fahrenheit.
+**Note:** You can change the `25` to `0` when you're ready to generate alerts to look at. This number represents the temperature in degrees Celsius to check for when creating alerts. 25 degrees Celsius is 77 degrees Fahrenheit.
 ***
 
 - Back to the **Stream Analytics Job blade**, click on the **Outputs** tile and in the **Outputs blade**, click on **Add**
