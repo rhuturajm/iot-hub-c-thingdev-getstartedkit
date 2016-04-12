@@ -121,6 +121,7 @@ You will need to install the SparkFun Thingdev board extension for the Arduino I
 
 - Follow the instructions up to the end of "Setting Up Arduino" [here](https://learn.sparkfun.com/tutorials/esp8266-thing-development-board-hookup-guide). There you will see how to add a URL pointing to SparkFun's repository of board extensions, how to make the SparkFun Thingdev board selectable under the **Tools** menu, and how to get the Blink sketch to run.
 - After going through this, you should have a working sample with a blinking light on your board.
+    - If you can’t upload the sample, reconnect the device, then the power switch to OFF. Press the upload button, and flip the switch back to ON.
 
 ## 1.6 Install Library Dependencies
 
@@ -483,7 +484,8 @@ You will need to install the SparkFun Thingdev board extension for the Arduino I
 
 - Follow the instructions here: https://learn.sparkfun.com/tutorials/esp8266-thing-development-board-hookup-guide. There you will see how to add a URL pointing to Spark's repository of board extensions, how to make the SparkFun Thingdev board selectable under the **Tools** menu, and how to get the Blink sketch to run.
 - After going through this, you should have a working sample with a blinking light on your board.
-
+    - If you can’t upload the sample, reconnect the device, then the power switch to OFF. Press the upload button, and flip the switch back to ON.
+    
 ## 2.10 Install Library Dependencies
 
 For this project, we'll also need the the following libraries:
