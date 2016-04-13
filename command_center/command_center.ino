@@ -10,7 +10,7 @@
 
 const char ssid[] = "[SSID]"; //  your WiFi SSID (name)
 const char pass[] = "[PASSWORD]";    // your WiFi password (use for WPA, or use as key for WEP)
-const char connectionString = "HostName=[HubName].azure-devices.net;DeviceId=[DeviceName];SharedAccessKey=[KEY]";
+const char connectionString[] = "HostName=[HubName].azure-devices.net;DeviceId=[DeviceName];SharedAccessKey=[KEY]";
 int status = WL_IDLE_STATUS;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
