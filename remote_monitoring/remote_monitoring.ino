@@ -4,17 +4,26 @@
 // Please use an Arduino IDE 1.6.8 or greater
 
 #include <ESP8266WiFi.h>
-#include <time.h>
+#include <WiFiClientSecure.h>
+#include <WiFiUdp.h>
+
+#include <AzureIoTHub.h>
+
 #include "remote_monitoring.h"
 
-char ssid[] = "[WiFi SSID]"; //  your WiFi SSID (name)
-char pass[] = "[WiFi password]";    // your WiFi password (use for WPA, or use as key for WEP)
-int status = WL_IDLE_STATUS;
+char ssid[] = "[Your WiFi network SSID or name]";
+char pass[] = "[Your WiFi network WPA password or WEP key]";
+
+WiFiClientSecure sslClient;
+
+AzureIoTHubClient iotHubClient(sslClient);
 
 void setup() {
     initSerial();
     initWifi();
     initTime();
+
+    iotHubClient.begin();
 }
 
 void loop() {
@@ -36,32 +45,31 @@ void initWifi() {
     Serial.println(ssid);
 
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
-    status = WiFi.begin(ssid, pass);
-
-    while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
-        Serial.print(".");
+    while (WiFi.begin(ssid, pass) != WL_CONNECTED) {
+      // unsuccessful, retry in 4 seconds
+      Serial.print("failed ... ");
+      delay(4000);
+      Serial.print("retrying ... ");
     }
 
     Serial.println("Connected to wifi");
 }
 
-void initTime() {
-    time_t epochTime;
+void initTime() {  
+   time_t epochTime;
 
-    configTime(0, 0, "pool.ntp.org", "time.nist.gov");
+   configTime(0, 0, "pool.ntp.org", "time.nist.gov");
 
-    while (true) {
-        epochTime = time(NULL);
+   while (true) {
+       epochTime = time(NULL);
 
-        if (epochTime == 0) {
-            Serial.println("Fetching NTP epoch time failed! Waiting 2 seconds to retry.");
-            delay(2000);
-        } else {
-            Serial.print("Fetched NTP epoch time is: ");
-            Serial.println(epochTime);
-            break;
-        }
-    }
+       if (epochTime == 0) {
+           Serial.println("Fetching NTP epoch time failed! Waiting 2 seconds to retry.");
+           delay(2000);
+       } else {
+           Serial.print("Fetched NTP epoch time is: ");
+           Serial.println(epochTime);
+           break;
+       }
+   }
 }
-
