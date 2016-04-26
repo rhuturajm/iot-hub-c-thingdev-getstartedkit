@@ -93,7 +93,7 @@ In this tutorial, you'll be doing the following:
 
 1) Disable the simulated devices created with the solution (Go to Devices>>Select the device>> on the device details menu on the right, clich on Disable Device. Repeat with all the simulated devices).
 
-2) **stop** your remote monitoring solution while you are working on the next steps. (See: [Troubleshooting](#troubleshooting))
+2) **Stop** your remote monitoring solution while you are working on the next steps. (See: [Troubleshooting](#troubleshooting))
 ***
 
 - For additional reference, refer to the following:
