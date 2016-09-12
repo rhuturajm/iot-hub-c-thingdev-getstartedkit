@@ -4,9 +4,9 @@ platforms: arduino
 author: hegate
 ---
 
-# Get Started with Microsoft Azure IoT Starter Kit - SparkFun Thingdev
+# Get Started with Microsoft Azure IoT Starter Kit - SparkFun Thing Dev Kit
 
-This page contains technical information to help you get familiar with Azure IoT using the Azure IoT Starter Kit - SparkFun Thingdev. You will find two tutorials that will walk you through different scenarios. The first tutorial will show you how to connect your Azure IoT Starter kit to our Remote Monitoring preconfigured solution from Azure IoT Suite. In the second tutorial, you will leverage Azure IoT services to create your own IoT solution.
+This page contains technical information to help you get familiar with Azure IoT using the Azure IoT Starter Kit - SparkFun Thing Dev Kit. You will find two tutorials that will walk you through different scenarios. The first tutorial will show you how to connect your Azure IoT Starter kit to our Remote Monitoring preconfigured solution from Azure IoT Suite. In the second tutorial, you will leverage Azure IoT services to create your own IoT solution.
 
 You can choose to start with whichever tutorial you want to. If you've never worked with Azure IoT services before, we encourage you to start with the Remote Monitoring solution tutorial, because all of the Azure services will be provisioned for you in a built-in preconfigured solution. Then you can explore how each of the services work by going through the second tutorial.
 
@@ -16,13 +16,13 @@ You can choose to start with whichever tutorial you want to. If you've never wor
 **Don't have a kit yet?:** Click [here](http://azure.com/iotstarterkits)
 ***
 
-- [Running a Simple Remote Monitoring Solution with the SparkFun Thingdev](#run-on-device)
+- [Running a Simple Remote Monitoring Solution with the SparkFun Thing Dev Kit](#run-on-device)
 - [Using Microsoft Azure IoT to Process and Use Sensor Data to Indicate Abnormal Temperatures](#using-microsoft-azure-iot)
 
 <a name="run-on-device" />
-# Running a Simple Remote Monitoring Solution with the SparkFun Thingdev
+# Running a Simple Remote Monitoring Solution with the SparkFun Thing Dev Kit
 
-This tutorial describes the process of taking your SparkFun Thingdev kit, and using it to develop a temperature, humidity and pressure reader that can communicate with the cloud using the  Microsoft Azure IoT SDK. 
+This tutorial describes the process of taking your SparkFun Thing Dev Kit kit, and using it to develop a temperature, humidity and pressure reader that can communicate with the cloud using the  Microsoft Azure IoT SDK. 
 
 ## Table of Contents
 
@@ -32,7 +32,7 @@ This tutorial describes the process of taking your SparkFun Thingdev kit, and us
   - [1.2.2 Required Hardware](#122-required-hardware)
 - [1.3 Create a New Azure IoT Suite Remote Monitoring solution and Add Device](#13-create-a-new-azure-iot-suite-remote-monitoring-solution-and-add-device)
 - [1.4 Connect the DHT22 Sensor Module to your Device](#14-connect-the-dht22-sensor-module-to-your-device)
-- [1.5 Add the SparkFun Thingdev to the Arduino IDE](#15-add-the-adafruit-sparkfun-thingdev-to-the-arduino-ide)
+- [1.5 Add the SparkFun Thing Dev Kit to the Arduino IDE](#15-add-the-adafruit-sparkfun-thingdev-to-the-arduino-ide)
 - [1.6 Install Library Dependencies](#16-install-library-dependencies)
 - [1.7 Modify the Remote Monitoring Sample](#17-modify-the-remote-monitoring-sample)
 - [1.8 Build Your Remote Monitoring Sample](#18-build-your-remote-monitoring-sample)
@@ -55,7 +55,7 @@ In this tutorial, you'll be doing the following:
 
 ### 1.2.2 Required Hardware
 
-- SparkFun Thingdev kit
+- SparkFun Thing Dev Kit kit
   - A microB USB cable
   - A desktop or laptop computer which can run **Arduino IDE 1.6.8**
 
@@ -105,7 +105,7 @@ In this tutorial, you'll be doing the following:
 
 ## 1.4 Connect the DHT22 Sensor Module to your Device
 
-- Using [this image](https://github.com/Azure-Samples/iot-hub-c-thingdev-getstartedkit/blob/master/img/thingdev_remote_monitoring.png?raw=true) as a reference, connect your DHT22 and SparkFun Thingdev to the breadboard
+- Using [this image](https://github.com/Azure-Samples/iot-hub-c-thingdev-getstartedkit/blob/master/img/thingdev_remote_monitoring.png?raw=true) as a reference, connect your DHT22 and SparkFun Thing Dev Kit to the breadboard
 
 ***
 **Note:** Column on the left corresponds to sensor and on the Right to board. On the image, the board is place between 10 and 30 and sensor between 1 and 9.
@@ -125,13 +125,13 @@ In this tutorial, you'll be doing the following:
 
 - For more information, see: [Adafruit DHT22 sensor setup](https://learn.adafruit.com/dht/connecting-to-a-dhtxx-sensor).
 
-**At the end of your work, your SparkFun Thingdev should be connected with a working sensor. We'll test it in the next sections.**
+**At the end of your work, your SparkFun Thing Dev Kit should be connected with a working sensor. We'll test it in the next sections.**
 
-## 1.5 Add the SparkFun Thingdev to the Arduino IDE
+## 1.5 Add the SparkFun Thing Dev Kit to the Arduino IDE
 
-You will need to install the SparkFun Thingdev board extension for the Arduino IDE:
+You will need to install the SparkFun Thing Dev Kit board extension for the Arduino IDE:
 
-- Follow the instructions up to the end of "Setting Up Arduino" [here](https://learn.sparkfun.com/tutorials/esp8266-thing-development-board-hookup-guide). There you will see how to add a URL pointing to SparkFun's repository of board extensions, how to make the SparkFun Thingdev board selectable under the **Tools** menu, and how to get the Blink sketch to run.
+- Follow the instructions up to the end of "Setting Up Arduino" [here](https://learn.sparkfun.com/tutorials/esp8266-thing-development-board-hookup-guide). There you will see how to add a URL pointing to SparkFun's repository of board extensions, how to make the SparkFun Thing Dev Kit board selectable under the **Tools** menu, and how to get the Blink sketch to run.
 - After going through this, you should have a working sample with a blinking light on your board.
     - If you can’t upload the sample, reconnect the device, then the power switch to OFF. Press the upload button, and flip the switch back to ON.
 
@@ -182,7 +182,7 @@ static const char* hubSuffix = "azure-devices.net";
 **Note**: As of 1.6.8, the Arduino IDE doesn't properly show "Upload Completed", even when it succeeds.
 ***
 
-- There should now be a green LED on your SparkFun Thingdev. Re-select the COM port if necessary, and then open the Serial Monitor. After 15 seconds you should see a measurements update.
+- There should now be a green LED on your SparkFun Thing Dev Kit. Re-select the COM port if necessary, and then open the Serial Monitor. After 15 seconds you should see a measurements update.
 
 ***
 **Note**: When first starting you will likely see a “Fetching NTP epoch time failed” error – This is normal, and it trying to sync with Azure. This can take even up to 30 seconds to find a NTP server to sync with. One it is synced, it should start transmitting from there.
@@ -205,7 +205,7 @@ Please visit our [Azure IoT Dev Center](https://azure.microsoft.com/en-us/develo
 <a name="using-microsoft-azure-iot" />
 # Using Microsoft Azure IoT Services to Identify Temperature Anomalies
 
-This tutorial describes the process of taking your Microsoft Azure IoT Starter Kit for the SparkFun Thingdev, and using it to develop a temperature and humidity reader that can communicate with the cloud using the  Microsoft Azure IoT SDK.
+This tutorial describes the process of taking your Microsoft Azure IoT Starter Kit for the SparkFun Thing Dev Kit, and using it to develop a temperature and humidity reader that can communicate with the cloud using the  Microsoft Azure IoT SDK.
 
 ## Table of Contents
 
@@ -219,7 +219,7 @@ This tutorial describes the process of taking your Microsoft Azure IoT Starter K
 - [2.6 Create a Storage Account for Table Storage](#26-create-a-storage-account-for-table-storage)
 - [2.7 Create a Stream Analytics job to Save IoT Data in Table Storage and Raise Alerts](#26-create-a-stream-analytics-job-to-save-iot-data-in-table-storage-and-raise-alerts)
 - [2.8 Node Application Setup](#28-node-application-setup)
-- [2.9 Add the SparkFun Thingdev to the Arduino IDE](#29-add-the-adafruit-sparkfun-thingdev-to-the-arduino-ide)
+- [2.9 Add the SparkFun Thing Dev Kit to the Arduino IDE](#29-add-the-adafruit-sparkfun-thingdev-to-the-arduino-ide)
 - [2.10 Install Library Dependencies](#210-install-library-dependencies)
 - [2.11 Modify the Command Center Sample](#211-modify-the-command-center-sample)
 - [2.12 Build Your Command Center Sample](#212-build-your-command-center-sample)
@@ -246,13 +246,13 @@ The end result will be a functional command center where you can view the histor
 - Sensor interface from Adafruit
 
 ### 2.2.2 Required Hardware
-- SparkFun Thingdev IoT kit
+- SparkFun Thing Dev Kit IoT kit
   - A microB USB cable
   - A desktop or laptop computer which can run **Arduino IDE 1.6.8**
 
 ## 2.3 Connect the Sensor Module to your Device
 
-- Using [this image](https://github.com/Azure-Samples/iot-hub-c-thingdev-getstartedkit/blob/master/img/thingdev_command_center.png?raw=true) as a reference, connect your DHT22 and SparkFun Thingdev to the breadboard
+- Using [this image](https://github.com/Azure-Samples/iot-hub-c-thingdev-getstartedkit/blob/master/img/thingdev_command_center.png?raw=true) as a reference, connect your DHT22 and SparkFun Thing Dev Kit to the breadboard
 
 ***
 **Note:** Column on the left corresponds to sensor and on the Right to board. On the image, the board is place between 10 and 30 and sensor between 1 and 9. Additionally, when counting the - pins, start from the right and count in, as these do not align with the numbers indicated on the board.
@@ -278,7 +278,7 @@ The end result will be a functional command center where you can view the histor
 
 - For more information, see: [Adafruit DHT22 sensor setup](https://learn.adafruit.com/dht/connecting-to-a-dhtxx-sensor).
 
-**At the end of your work, your SparkFun Thingdev should be connected with a working sensor. We'll test it in the next sections.**
+**At the end of your work, your SparkFun Thing Dev Kit should be connected with a working sensor. We'll test it in the next sections.**
 
 
 ### 2.4 Create a New Microsoft Azure IoT Hub and Add Device
@@ -489,11 +489,11 @@ To deploy this project to the cloud using Azure, you can reference [Creating a N
 
 Next, we will update your device so that it can interact with all the things you just created.
 
-## 2.9 Add the SparkFun Thingdev to the Arduino IDE
+## 2.9 Add the SparkFun Thing Dev Kit to the Arduino IDE
 
-You will need to install the SparkFun Thingdev board extension for the Arduino IDE:
+You will need to install the SparkFun Thing Dev Kit board extension for the Arduino IDE:
 
-- Follow the instructions here: https://learn.sparkfun.com/tutorials/esp8266-thing-development-board-hookup-guide. There you will see how to add a URL pointing to Spark's repository of board extensions, how to make the SparkFun Thingdev board selectable under the **Tools** menu, and how to get the Blink sketch to run.
+- Follow the instructions here: https://learn.sparkfun.com/tutorials/esp8266-thing-development-board-hookup-guide. There you will see how to add a URL pointing to Spark's repository of board extensions, how to make the SparkFun Thing Dev Kit board selectable under the **Tools** menu, and how to get the Blink sketch to run.
 - After going through this, you should have a working sample with a blinking light on your board.
     - If you can’t upload the sample, reconnect the device, then the power switch to OFF. Press the upload button, and flip the switch back to ON.
     
@@ -552,7 +552,7 @@ static const char connectionString[] = "[Device Connection String]";
 **Note**: As of 1.6.8, the Arduino IDE doesn't properly show "Upload Completed", even when it succeeds.
 ***
 
-- There should now be a green LED on your SparkFun Thingdev. Re-select the COM port if necessary, and then open the Serial Monitor. After 15 seconds you should see a measurements update.
+- There should now be a green LED on your SparkFun Thing Dev Kit. Re-select the COM port if necessary, and then open the Serial Monitor. After 15 seconds you should see a measurements update.
 - Data is now being sent off at regular intervals to Microsoft Azure. When it detects something out of range, you will see the LED you’ve set up turn from green to red!
 
 Head back to your Node application and you will have a fully functional command center, complete with a history of sensor data, alerts that display when the temperature got outside a certain range, and commands that you can send to your device remotely.
