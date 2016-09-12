@@ -304,16 +304,20 @@ Event Hub is an Azure IoT publish-subscribe service that can ingest millions of 
 
 - Log on to the [Microsoft Azure Portal](https://portal.azure.com/)
 - Click on **New** -&gt; **Internet of Things**-&gt; **Event Hub**
-- After being redirected, click "Custom Create", Enter the following settings for the Event Hub (use a name of your choice for the event hub and the namespace):
-    - Event Hub Name: `thingdevEventHub`
-    - Region: `Your choice`
+- Enter the following settings for the Event Hub Namespace (use a name of your choice for the event hub and the namespace):
+    - Name: `Your choice` (we chose `SparkFun2Suite`)
+    - Pricing Tier: `Basic`
     - Subscription: `Your choice`
-    - Namespace Name: `Your Project Namespace, in our case “SparkFun2Suite”`
-- Click the **arrow** to continue.
-- Choose to create **4** partitions and retain messages for **7** days.
-- Click the **check** at the bottom right hand corner to create your event hub.
-- Click on your `SparkFun2Suite` service bus (what you named your service bus)
-- Click on the **Event Hubs** tab
+    - Resource Group: `Your choice`
+    - Location: `Your choice`
+- Click on **Create**
+- Wait until the Event Hub Namespace is created, and then create an Event Hub using the following steps:
+    - Click on your `SparkFun2Suite` Event Hub Namespace (or pick any other name that you used)
+    - Click the **Add Event Hub** 
+    - Name: `thingdevEventHub`
+- Click on **Create**
+- Wait until the new Event Bus is created
+- Click on the **Event Hubs** arrow in the **Overview** tab (might require a few clicks, until the UI is updated)
 - Select the `thingdevEventHub` eventhub and go in the **Configure** tab in the **Shared Access Policies** section, add a new policy:
     - Name = `readwrite`
     - Permissions = `Send, Listen`
@@ -324,11 +328,15 @@ Event Hub is an Azure IoT publish-subscribe service that can ingest millions of 
 
 ## 2.6 Create a Storage Account for Table Storage
 Now we will create a service to store our data in the cloud.
-
 - Log on to the [Microsoft Azure Portal](https://portal.azure.com/)
 - In the menu, click **New** and select **Data + Storage** then **Storage Account**
-- Choose **Classic** for the deployment model and click on **Create**
-- Enter the name of your choice (We chose `thingdevstorage`) for the account name, `Standard-RAGRS` for the type, choose your subscription, select the resource group you created earlier, then click on **Create**
+    - Name: `Your choice` (we chose `thingdevstorage`)
+    - Deployment model: `Classic`
+    - Performance: `Standard`
+    - Replication: `Read-access geo-redundant storage (RA-GRS)`
+    - Subscription: `Your choice`
+    - Resource Group: `Your choice`
+    - Location: `Your choice`
 - Once the account is created, find it in the **resources blade** or click on the **pinned tile**, go to **Settings**, **Keys**, and write down the _primary connection string_.
 
 ## 2.7 Create a Stream Analytics job to Save IoT Data in Table Storage and Raise Alerts
@@ -336,7 +344,7 @@ Stream Analytics is an Azure IoT service that streams and analyzes data in the c
 
 - Log on to the [Microsoft Azure Portal](https://portal.azure.com/)
 - In the menu, click **New**, then click **Internet of Things**, and then click **Stream Analytics Job**
-- Enter a name for the job (We chose “SparkFunStorageJob”), a preferred region, then choose your subscription. At this stage you are also offered to create a new or to use an existing resource group. Choose the resource group you created earlier (In our case, `SparkFun2Suite`).
+- Enter a name for the job (We chose “SparkFunStorageJob”), a preferred region, then choose your subscription. At this stage you are also offered to create a new or to use an existing resource group. Choose the resource group you created earlier.
 - Once the job is created, open your **Job’s blade** or click on the **pinned tile**, and find the section titled _“Job Topology”_ and click the **Inputs** tile. In the Inputs blade, click on **Add**
 - Enter the following settings:
     - Input Alias = _`TempSensors`_
@@ -375,27 +383,29 @@ WHERE MTemperature>25
 ```
 
 ***
-**Note:** You can change the `25` to `0` when you're ready to generate alerts to look at. This number represents the temperature in degrees Celsius to check for when creating alerts. 25 degrees Celsius is 77 degrees Fahrenheit.
+**Note:** You can change the `25` to `0` when you're ready to generate alerts to look at. This number represents the temperature in degrees celsius to check for when creating alerts. 25 degrees celsius is 77 degrees fahrenheit.
 ***
 
 - Back to the **Stream Analytics Job blade**, click on the **Outputs** tile and in the **Outputs blade**, click on **Add**
 - Enter the following settings then click on **Create**:
     - Output Alias = _`TemperatureTableStorage`_
     - Sink = _`Table Storage`_
-    - Storage account = _`thingdevstorage`_ (The storage you made earlier)
+    - Subscription = _`Provide table settings storage manually`_
+    - Storage account = _`thingdevstorage`_ (The storage account you created earlier)
     - Storage account key = _(The primary key for the storage account made earlier, can be found in Settings -&gt; Keys -&gt; Primary Access Key)_
-    - Table Name = _`TemperatureRecords`_*Your choice - If the table doesn’t already exist, Local Storage will create it
+    - Table Name = _`TemperatureRecords`_ (Your choice - If the table doesn’t already exist, Local Storage will create it)
     - Partition Key = _`DeviceId`_
     - Row Key = _`EventTime`_
     - Batch size = _`1`_
 - Back to the **Stream Analytics Job blade**, click on the **Outputs tile**, and in the **Outputs blade**, click on **Add**
 - Enter the following settings then click on **Create**:
     - Output Alias = _`TemperatureAlertToEventHub`_
-    - Source = _`Event Hub`_
+    - Sink = _`Event Hub`_
+    - Subscription = _`Provide table settings storage manually`_
     - Service Bus Namespace = _`SparkFun2Suite`_
     - Event Hub Name = _`thingdeveventhub`_ (The Event Hub you made earlier)
     - Event Hub Policy Name = _`readwrite`_
-    - Event Hub Policy Key = _Primary Key for readwrite Policy name (That's the one you wrote down after creating the event hub)_
+    - Event Hub Policy Key = _`Primary Key for readwrite Policy name`_ (That's the one you wrote down after creating the event hub)
     - Partition Key Column = _`0`_
     - Event Serialization format = _`JSON`_
     - Encoding = _`UTF-8`_
@@ -444,8 +454,8 @@ bower install
         - Click on the name of the event hub from above to open it
         - Click on the "CONNECTION INFORMATION" button along the bottom. 
         - From there, click the button to copy the readwrite shared access policy connection string.
-    - deviceId:
-        - Use the information on the [Manage IoT Hub](https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md) to retrieve your deviceId using either the Device Explorer or iothub-explorer tools.
+    - deviceConnString:
+        - Use the information on the [Manage IoT Hub](https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md) to retrieve your device connection string using either the Device Explorer or iothub-explorer tools.
     - iotHubConnString: 
         - In the [Azure Portal](https://portal.azure.com)
         - Open the IoT Hub you created previously. 
@@ -508,24 +518,15 @@ You will need to install the SparkFun Thing Dev Kit board extension for the Ardu
     
 ## 2.10 Install Library Dependencies
 
-For this project, we'll also need the the following libraries:
+For this project, we'll also need the following libraries:
 
  - DHT Sensor Library
- - Adafruit Sensor Library
  - Adafruit DHT Unified
- 
- To install them, click on the `Sketch -> Include Library -> Manage Libraries`. Search for each library using the box in the upper-right to filter your search, click on the found library, and click the "Install" button.
+ - AzureIoTHub
 
- We will also need the latest Azure IoT Library. 
- - Go to https://github.com/stefangordon/AzureIoT/ and follow the instructions under "ESP8266"
+To install them, click on the `Sketch -> Include Library -> Manage Libraries`. Search for each library using the box in the upper-right to filter your search, click on the found library, and click the "Install" button.
 
-***
-**Note**: If you have an earlier version of the IoT library, navigate to your Arduino documents directory. Inside the "Libraries" folder, there will be a number of installed libraries. Simply delete the `AzureIoT` folder.
-***
-
-Lastly we will also need the latest esp8266 Arduino library
-- Visit https://github.com/esp8266/Arduino and follow the instructions for "Using git version"
-  - **Make sure you're using Python 2.7.x!**
+The Adafruit Sensor library is also needed. This can be downloaded [here](https://github.com/adafruit/Adafruit_Sensor). Instructions for manually installing a library can be found [here](https://www.arduino.cc/en/Guide/Libraries).
 
 ## 2.11 Modify the Command Center sample
 
@@ -563,6 +564,7 @@ static const char connectionString[] = "[Device Connection String]";
 
 - There should now be a green LED on your SparkFun Thing Dev Kit. Re-select the COM port if necessary, and then open the Serial Monitor. After 15 seconds you should see a measurements update.
 - Data is now being sent off at regular intervals to Microsoft Azure. When it detects something out of range, you will see the LED you’ve set up turn from green to red!
+- You can click the green button (labeled "Turn on") and the red button (labeled "Turn off") in the application to toggle the green and red LEDs in your kit.
 
 Head back to your Node application and you will have a fully functional command center, complete with a history of sensor data, alerts that display when the temperature got outside a certain range, and commands that you can send to your device remotely.
 
@@ -585,3 +587,10 @@ Please visit our [Azure IoT Dev Center](https://azure.microsoft.com/en-us/develo
     - For each IoT Hub resource:
         - Click on the resource and click the "Devices" button in the new blade that appears
         - Click on each device in the list and click the "Disable" button that appears in the new blade at the bottom
+
+## Data is not showing up in the Node.js application
+
+In this section we will explain how to see the data flowing from the Arduino application to the Node.js application:
+- Arduino application: In the Arduino IDE go to Tools -> Serial Monitor
+- IoT Hub: Use [Device Explorer](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md)
+- Azure Storage Table: Use [Azure Storage Explorer](http://storageexplorer.com/)
