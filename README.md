@@ -137,25 +137,15 @@ You will need to install the SparkFun Thingdev board extension for the Arduino I
 
 ## 1.6 Install Library Dependencies
 
-For this project, we'll also need the the following libraries:
+For this project, we'll also need the following libraries:
 
  - DHT Sensor Library
- - Adafruit Sensor Library
  - Adafruit DHT Unified
- 
- To install them, click on the `Sketch -> Include Library -> Manage Libraries`. Search for each library using the box in the upper-right to filter your search, click on the found library, and click the "Install" button.
+ - AzureIoTHub
 
- We will also need the latest Azure IoT Library. 
- - Download the [library as a zip](https://github.com/arduino-libraries/AzureIoT/archive/master.zip)
- - Extract to `C:\Users\[username]\Documents\Arduino\libraries` (remove any other copies of the library)
+To install them, click on the `Sketch -> Include Library -> Manage Libraries`. Search for each library using the box in the upper-right to filter your search, click on the found library, and click the "Install" button.
 
-***
-**Note**: If you have an earlier version of the IoT library, navigate to your Arduino documents directory. Inside the "Libraries" folder, there will be a number of installed libraries. Simply delete the `AzureIoT` folder.
-***
-
-Lastly we will also need the latest esp8266 Arduino library
-- Visit https://github.com/esp8266/Arduino and follow the instructions for "Using git version"
-  - **Make sure you're using Python 2.7.x!**
+The Adafruit Sensor library is also needed. This can be downloaded [here](https://github.com/adafruit/Adafruit_Sensor). Instructions for manually installing a library can be found [here](https://www.arduino.cc/en/Guide/Libraries).
   
 ## 1.7 Modify the Remote Monitoring sample 
 
