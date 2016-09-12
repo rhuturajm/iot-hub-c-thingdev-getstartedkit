@@ -132,9 +132,9 @@ In this tutorial, you'll be doing the following:
 You will need to install the SparkFun Thing Dev Kit board extension for the Arduino IDE:
 
 - Follow the instructions up to the end of "Setting Up Arduino" [here](https://learn.sparkfun.com/tutorials/esp8266-thing-development-board-hookup-guide). There you will see how to add a URL pointing to SparkFun's repository of board extensions, how to make the SparkFun Thing Dev Kit board selectable under the **Tools** menu, and how to get the Blink sketch to run.
-- 
+
 ***
-**Note**: Make sure that you select "SparkFun ESP8266 Thing Dev" and NOT "SparkFun ESP8266 Thing" in the Arduino IDE (under **Tools -> Board**
+**Note**: Make sure that you select "SparkFun ESP8266 Thing Dev" and NOT "SparkFun ESP8266 Thing" in the Arduino IDE (under **Tools -> Board)**
 ***
 
 - After going through this, you should have a working sample with a blinking light on your board.
