@@ -4,7 +4,7 @@ platforms: arduino
 author: hegate
 ---
 
-# Get Started with Microsoft Azure IoT Starter Kit - SparkFun Thing Dev Kit
+# Get Started with Microsoft Azure IoT Starter Kit - SparkFun ESP8266 Thing Dev Kit (Arduino-compatible)
 
 This page contains technical information to help you get familiar with Azure IoT using the Azure IoT Starter Kit - SparkFun Thing Dev Kit. You will find two tutorials that will walk you through different scenarios. The first tutorial will show you how to connect your Azure IoT Starter kit to our Remote Monitoring preconfigured solution from Azure IoT Suite. In the second tutorial, you will leverage Azure IoT services to create your own IoT solution.
 
@@ -132,6 +132,11 @@ In this tutorial, you'll be doing the following:
 You will need to install the SparkFun Thing Dev Kit board extension for the Arduino IDE:
 
 - Follow the instructions up to the end of "Setting Up Arduino" [here](https://learn.sparkfun.com/tutorials/esp8266-thing-development-board-hookup-guide). There you will see how to add a URL pointing to SparkFun's repository of board extensions, how to make the SparkFun Thing Dev Kit board selectable under the **Tools** menu, and how to get the Blink sketch to run.
+- 
+***
+**Note**: Make sure that you select "SparkFun ESP8266 Thing Dev" and NOT "SparkFun ESP8266 Thing" in the Arduino IDE (under **Tools -> Board**
+***
+
 - After going through this, you should have a working sample with a blinking light on your board.
     - If you can’t upload the sample, reconnect the device, then the power switch to OFF. Press the upload button, and flip the switch back to ON.
 
