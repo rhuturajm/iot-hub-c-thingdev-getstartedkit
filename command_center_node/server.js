@@ -59,10 +59,25 @@ app.get('/api/temperatures', function(req, res) {
     var query = new azure.TableQuery()
         .select(['eventtime', 'temperaturereading', 'deviceid'])
         .where('PartitionKey eq ?', deviceId);
-    tableSvc.queryEntities(storageTable, query, null, function(err, result, response) {
+    var nextContinuationToken = null;
+    var fullresult = { entries: [] };
+    queryTable(storageTable, query, nextContinuationToken, fullresult, function (err, result, response) {
         res.json(result.entries.slice(-10));
     })
 })
+
+function queryTable(table, query, token, fullresult, callback) {
+    var nextContinuationToken = token;
+    tableSvc.queryEntities(table, query, nextContinuationToken, function (err, result, response) {
+        fullresult.entries.push.apply(fullresult.entries, result.entries);
+        if (result.continuationToken) {
+            nextContinuationToken = result.continuationToken;
+            queryTable(table, query, nextContinuationToken, fullresult, callback);
+        } else {
+            callback(err, fullresult, response);
+        }
+    })
+};
 
 var completedCallback = function(err, res) {
     if (err) { console.log(err); }
