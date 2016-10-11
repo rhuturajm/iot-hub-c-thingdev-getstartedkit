@@ -152,6 +152,7 @@ void remote_monitoring_run(void)
              */
             #ifdef AzureIoTHubVersion
                   config.deviceSasToken = NULL;
+                  config.protocolGatewayHostName = NULL;
             #endif
 
             iotHubClientHandle = IoTHubClient_LL_Create(&config);
