@@ -16,14 +16,14 @@ char pass[] = "[Your WiFi network WPA password or WEP key]";
 
 WiFiClientSecure sslClient;
 
-AzureIoTHubClient iotHubClient(sslClient);
+static AzureIoTHubClient iotHubClient;
 
 void setup() {
     initSerial();
     initWifi();
     initTime();
 
-    iotHubClient.begin();
+    iotHubClient.begin(sslClient);
 }
 
 void loop() {
