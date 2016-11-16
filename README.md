@@ -26,19 +26,20 @@ This tutorial describes the process of taking your SparkFun ESP8266 Thing Dev Ki
 
 ## Table of Contents
 
-- [1.1 Tutorial Overview](#11-tutorial-overview)
-- [1.2 Before Starting](#12-before-starting)
-  - [1.2.1 Required Software](#121-required-software)
-  - [1.2.2 Required Hardware](#122-required-hardware)
-- [1.3 Create a New Azure IoT Suite Remote Monitoring solution and Add Device](#13-create-a-new-azure-iot-suite-remote-monitoring-solution-and-add-device)
-- [1.4 Connect the DHT22 Sensor Module to your Device](#14-connect-the-dht22-sensor-module-to-your-device)
-- [1.5 Add the SparkFun ESP8266 Thing Dev Kit to the Arduino IDE](#15-add-the-adafruit-sparkfun-thingdev-to-the-arduino-ide)
-- [1.6 Install Library Dependencies](#16-install-library-dependencies)
-- [1.7 Modify the Remote Monitoring Sample](#17-modify-the-remote-monitoring-sample)
-- [1.8 Build Your Remote Monitoring Sample](#18-build-your-remote-monitoring-sample)
-- [1.9 View the Sensor Data from the Remote Monitoring Portal](#19-view-the-sensor-data-from-the-remote-monitoring-portal)
-- [1.10 Next steps](#110-next-steps)
+- [1.1 Tutorial Overview](#section1.1)
+- [1.2 Before Starting](#section1.2)
+  - [1.2.1 Required Software](#section1.2.1)
+  - [1.2.2 Required Hardware](#section1.2.2)
+- [1.3 Create a New Azure IoT Suite Remote Monitoring solution and Add Device](#section1.3)
+- [1.4 Connect the DHT22 Sensor Module to your Device](#section1.4)
+- [1.5 Add the SparkFun ESP8266 Thing Dev Kit to the Arduino IDE](#section1.5)
+- [1.6 Install Library Dependencies](#section1.6)
+- [1.7 Modify the Remote Monitoring Sample](#section1.7)
+- [1.8 Build Your Remote Monitoring Sample](#section1.8)
+- [1.9 View the Sensor Data from the Remote Monitoring Portal](#section1.9)
+- [1.10 Next steps](#section1.10)
 
+<a name="section1.1" />
 ## 1.1 Tutorial Overview
 
 In this tutorial, you'll be doing the following:
@@ -46,19 +47,23 @@ In this tutorial, you'll be doing the following:
 - Setting your device and sensors up so that it can communicate with both your computer, and Azure IoT. 
 - Updating the device code sample to include our connection data and send it to Azure to be viewed remotely.
 
+<a name="section1.2" />
 ## 1.2 Before Starting
 
+<a name="section1.2.1" />
 ### 1.2.1 Required Software
 
 - Arduino IDE, version 1.6.8. from www.arduino.cc (Earlier versions will not work with the AzureIoT library)
 - Sensor interface library from Adafruit
 
+<a name="section1.2.2" />
 ### 1.2.2 Required Hardware
 
 - SparkFun ESP8266 Thing Dev Kit kit
   - A microB USB cable
   - A desktop or laptop computer which can run **Arduino IDE 1.6.8**
 
+<a name="section1.3" />
 ## 1.3 Create a New Azure IoT Suite Remote Monitoring solution and Add Device
 
 - Log in to [Azure IoT Suite](https://www.azureiotsuite.com/)  with your Microsoft account and click **Create a New Preconfigured Solution** 
@@ -103,6 +108,7 @@ In this tutorial, you'll be doing the following:
  - https://azure.microsoft.com/en-us/documentation/articles/iot-suite-remote-monitoring-sample-walkthrough/
  - https://azure.microsoft.com/en-us/documentation/articles/iot-suite-connecting-devices/
 
+<a name="section1.4" />
 ## 1.4 Connect the DHT22 Sensor Module to your Device
 
 - Using [this image](https://github.com/Azure-Samples/iot-hub-c-thingdev-getstartedkit/blob/master/img/thingdev_remote_monitoring.png?raw=true) as a reference, connect your DHT22 and SparkFun ESP8266 Thing Dev Kit to the breadboard
@@ -127,6 +133,7 @@ In this tutorial, you'll be doing the following:
 
 **At the end of your work, your SparkFun ESP8266 Thing Dev Kit should be connected with a working sensor. We'll test it in the next sections.**
 
+<a name="section1.5" />
 ## 1.5 Add the SparkFun ESP8266 Thing Dev Kit to the Arduino IDE
 
 You will need to install the SparkFun ESP8266 Thing Dev Kit board extension for the Arduino IDE:
@@ -140,6 +147,7 @@ You will need to install the SparkFun ESP8266 Thing Dev Kit board extension for 
 - After going through this, you should have a working sample with a blinking light on your board.
     - If you can’t upload the sample, reconnect the device, then the power switch to OFF. Press the upload button, and flip the switch back to ON.
 
+<a name="section1.6" />
 ## 1.6 Install Library Dependencies
 
 For this project, we'll also need the following libraries:
@@ -151,7 +159,8 @@ For this project, we'll also need the following libraries:
 To install them, click on the `Sketch -> Include Library -> Manage Libraries`. Search for each library using the box in the upper-right to filter your search, click on the found library, and click the "Install" button.
 
 The Adafruit Sensor library is also needed. This can be downloaded [here](https://github.com/adafruit/Adafruit_Sensor). Instructions for manually installing a library can be found [here](https://www.arduino.cc/en/Guide/Libraries).
-  
+
+<a name="section1.7" />
 ## 1.7 Modify the Remote Monitoring sample 
 
 - Unzip the [example code](https://github.com/Azure-Samples/iot-hub-c-thingdev-getstartedkit/archive/master.zip), and double-click the file `remote_monitoring.ino` to open the project in the Arduino IDE.
@@ -182,6 +191,7 @@ static const char* hubSuffix = "azure-devices.net";
 
 - Save with `Control-s`
 
+<a name="section1.8" />
 ## 1.8 Build Your Remote Monitoring Sample
 
 - On windows, the COM port will disconnect, and a new one will appear. Use **Tools -&gt; Port -&gt; COM** to re-select it.
@@ -197,6 +207,7 @@ static const char* hubSuffix = "azure-devices.net";
 **Note**: When first starting you will likely see a “Fetching NTP epoch time failed” error – This is normal, and it trying to sync with Azure. This can take even up to 30 seconds to find a NTP server to sync with. One it is synced, it should start transmitting from there.
 ***
 
+<a name="section1.9" />
 ## 1.9 View the Sensor Data from the Remote Monitoring Portal
 
 - Once you have the sample running, visit your dashboard by visiting azureiotsuite.com and clicking “Launch” on your solution
@@ -207,6 +218,7 @@ static const char* hubSuffix = "azure-devices.net";
 **Note:** Make sure you delete or **stop** your remote monitoring solution once you have completed this to avoid unnecessary Azure consumption!  (See: [Troubleshooting](#troubleshooting))
 ***
 
+<a name="section1.10" />
 ## 1.10 Next steps
 
 Please visit our [Azure IoT Dev Center](https://azure.microsoft.com/en-us/develop/iot/) for more samples and documentation on Azure IoT.
@@ -218,22 +230,23 @@ This tutorial describes the process of taking your Microsoft Azure IoT Starter K
 
 ## Table of Contents
 
-- [2.1 Tutorial Overview](#21-tutorial-overview)
-- [2.2 Before Starting](#22-before-starting)
-  - [2.2.1 Required Software](#221-required-software)
-  - [2.2.2 Required Hardware](#222-required-hardware)
-- [2.3 Connect the Sensor Module to your Device](#23-connect-the-sensor-module-to-your-device)
-- [2.4 Create a New Microsoft Azure IoT Hub and Add Device](#24-create-a-new-microsoft-azure-iot-hub-and-add-device)
-- [2.5 Create an Event Hub](#25-create-an-event-hub)
-- [2.6 Create a Storage Account for Table Storage](#26-create-a-storage-account-for-table-storage)
-- [2.7 Create a Stream Analytics job to Save IoT Data in Table Storage and Raise Alerts](#26-create-a-stream-analytics-job-to-save-iot-data-in-table-storage-and-raise-alerts)
-- [2.8 Node Application Setup](#28-node-application-setup)
-- [2.9 Add the SparkFun ESP8266 Thing Dev Kit to the Arduino IDE](#29-add-the-adafruit-sparkfun-thingdev-to-the-arduino-ide)
-- [2.10 Install Library Dependencies](#210-install-library-dependencies)
-- [2.11 Modify the Command Center Sample](#211-modify-the-command-center-sample)
-- [2.12 Build Your Command Center Sample](#212-build-your-command-center-sample)
-- [2.13 Next steps](#213-next-steps)
+- [2.1 Tutorial Overview](#section2.1)
+- [2.2 Before Starting](#section2.2)
+  - [2.2.1 Required Software](#section2.2.1)
+  - [2.2.2 Required Hardware](#section2.2.2)
+- [2.3 Connect the Sensor Module to your Device](#section2.3)
+- [2.4 Create a New Microsoft Azure IoT Hub and Add Device](#section2.4)
+- [2.5 Create an Event Hub](#section2.5)
+- [2.6 Create a Storage Account for Table Storage](#section2.6)
+- [2.7 Create a Stream Analytics job to Save IoT Data in Table Storage and Raise Alerts](#section2.7)
+- [2.8 Node Application Setup](#section2.8)
+- [2.9 Add the SparkFun ESP8266 Thing Dev Kit to the Arduino IDE](#section2.9)
+- [2.10 Install Library Dependencies](#section2.10)
+- [2.11 Modify the Command Center Sample](#section2.11)
+- [2.12 Build Your Command Center Sample](#section2.12)
+- [2.13 Next steps](#section2.13)
 
+<a name="section2.1" />
 ## 2.1 Tutorial Overview
 
 This tutorial has the following steps:
@@ -250,8 +263,10 @@ Here is a breakdown of the data flow:
 
 The end result will be a functional command center where you can view the history of your device's sensor data, a history of alerts, and send commands back to the device.
 
+<a name="section2.2" />
 ## 2.2 Before Starting
 
+<a name="section2.2.1" />
 ### 2.2.1 Required Software
 
 - [Git](https://git-scm.com/downloads) - For cloning the required repositories
@@ -259,11 +274,13 @@ The end result will be a functional command center where you can view the histor
 - Arduino IDE, version 1.6.8. (Earlier versions will not work with the Azure IoT library)
 - Sensor interface from Adafruit
 
+<a name="section2.2.2" />
 ### 2.2.2 Required Hardware
 - SparkFun ESP8266 Thing Dev Kit IoT kit
   - A microB USB cable
   - A desktop or laptop computer which can run **Arduino IDE 1.6.8**
 
+<a name="section2.3" />
 ## 2.3 Connect the Sensor Module to your Device
 
 - Using [this image](https://github.com/Azure-Samples/iot-hub-c-thingdev-getstartedkit/blob/master/img/thingdev_command_center.png?raw=true) as a reference, connect your DHT22 and SparkFun ESP8266 Thing Dev Kit to the breadboard
@@ -294,7 +311,7 @@ The end result will be a functional command center where you can view the histor
 
 **At the end of your work, your SparkFun ESP8266 Thing Dev Kit should be connected with a working sensor. We'll test it in the next sections.**
 
-
+<a name="section2.4" />
 ### 2.4 Create a New Microsoft Azure IoT Hub and Add Device
 
 - To create your Microsoft Azure IoT Hub and add a device, follow the instructions outlined in the [Setup IoT Hub Microsoft Azure Iot SDK page](https://github.com/Azure/azure-iot-sdks/blob/master/doc/setup_iothub.md).
@@ -304,6 +321,7 @@ The end result will be a functional command center where you can view the histor
 **Note:** Make sure to copy down the names and connection strings mentioned into a text document for reference later.
 ***
 
+<a name="section2.5" />
 ## 2.5 Create an Event Hub
 Event Hub is an Azure IoT publish-subscribe service that can ingest millions of events per second and stream them into multiple applications, services or devices.
 
@@ -331,6 +349,7 @@ Event Hub is an Azure IoT publish-subscribe service that can ingest millions of 
 - From the your IoT Hub Settings (The Resource that has connected dots) on the [Microsoft Azure Portal](https://portal.azure.com/), click the **Messaging blade** (found in your settings), write down the _Event Hub-compatible name_
 - Look at the _Event-hub-compatible Endpoint_, and write down this part: sb://**thispart**.servicebus.windows.net/ we will call this one the _IoTHub EventHub-compatible namespace_
 
+<a name="section2.6" />
 ## 2.6 Create a Storage Account for Table Storage
 Now we will create a service to store our data in the cloud.
 - Log on to the [Microsoft Azure Portal](https://portal.azure.com/)
@@ -344,6 +363,7 @@ Now we will create a service to store our data in the cloud.
     - Location: `Your choice`
 - Once the account is created, find it in the **resources blade** or click on the **pinned tile**, go to **Settings**, **Keys**, and write down the _primary connection string_.
 
+<a name="section2.7" />
 ## 2.7 Create a Stream Analytics job to Save IoT Data in Table Storage and Raise Alerts
 Stream Analytics is an Azure IoT service that streams and analyzes data in the cloud. We'll use it to process data coming from your device.
 
@@ -421,6 +441,7 @@ WHERE MTemperature>25
 **Note:** Make sure to **stop** your Command Center jobs once you have when you take a break or finish to avoid unnecessary Azure consumption!  (See: [Troubleshooting](#troubleshooting))
 ***
 
+<a name="section2.8" />
 ## 2.8 Node Application Setup
 
  - If you do not have it already, install Node.js and NPM.
@@ -513,6 +534,7 @@ To deploy this project to the cloud using Azure, you can reference [Creating a N
 
 Next, we will update your device so that it can interact with all the things you just created.
 
+<a name="section2.9" />
 ## 2.9 Add the SparkFun ESP8266 Thing Dev Kit to the Arduino IDE
 
 You will need to install the SparkFun ESP8266 Thing Dev Kit board extension for the Arduino IDE:
@@ -520,7 +542,8 @@ You will need to install the SparkFun ESP8266 Thing Dev Kit board extension for 
 - Follow the instructions here: https://learn.sparkfun.com/tutorials/esp8266-thing-development-board-hookup-guide. There you will see how to add a URL pointing to Spark's repository of board extensions, how to make the SparkFun ESP8266 Thing Dev Kit board selectable under the **Tools** menu, and how to get the Blink sketch to run.
 - After going through this, you should have a working sample with a blinking light on your board.
     - If you can’t upload the sample, reconnect the device, then the power switch to OFF. Press the upload button, and flip the switch back to ON.
-    
+
+<a name="section2.10" />
 ## 2.10 Install Library Dependencies
 
 For this project, we'll also need the following libraries:
@@ -533,6 +556,7 @@ To install them, click on the `Sketch -> Include Library -> Manage Libraries`. S
 
 The Adafruit Sensor library is also needed. This can be downloaded [here](https://github.com/adafruit/Adafruit_Sensor). Instructions for manually installing a library can be found [here](https://www.arduino.cc/en/Guide/Libraries).
 
+<a name="section2.11" />
 ## 2.11 Modify the Command Center sample
 
 - Unzip the example code, and double-click the file `command_center.ino` to open the project in the Arduino IDE.
@@ -559,6 +583,7 @@ static const char connectionString[] = "[Device Connection String]";
 - Replace the placeholders with your Device ID and connection string you created at the beginning of this tutorial. 
 - Save with `Control-s`
 
+<a name="section2.12" />
 ## 2.12 Build Your Command Center Sample
 
 - Build and upload the code using **Sketch -&gt;  Upload**.
@@ -577,6 +602,7 @@ Head back to your Node application and you will have a fully functional command 
 **Note:** Make sure to **stop** your Command Center jobs once you have when you finish to avoid unnecessary Azure consumption!  (See: [Troubleshooting](#troubleshooting))
 ***
 
+<a name="section2.13" />
 ## 2.13 Next steps
 
 Please visit our [Azure IoT Dev Center](https://azure.microsoft.com/en-us/develop/iot/) for more samples and documentation on Azure IoT.
