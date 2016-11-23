@@ -3,30 +3,28 @@
 
 // Please use an Arduino IDE 1.6.8 or greater
 
+#include "iot_configs.h"
+
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
 #include <WiFiUdp.h>
 
 #include <AzureIoTHub.h>
-#ifdef AzureIoTUtilityVersion
-#include <AzureIoTProtocol_HTTP.h>
+#if defined(IOT_CONFIG_MQTT)
+    #include <AzureIoTProtocol_MQTT.h>
+#elif defined(IOT_CONFIG_HTTP)
+    #include <AzureIoTProtocol_HTTP.h>
 #endif
 
 #include "remote_monitoring.h"
 
-char ssid[] = "[Your WiFi network SSID or name]";
-char pass[] = "[Your WiFi network WPA password or WEP key]";
-
-WiFiClientSecure sslClient;
-
-static AzureIoTHubClient iotHubClient;
+static char ssid[] = IOT_CONFIG_WIFI_SSID;
+static char pass[] = IOT_CONFIG_WIFI_PASSWORD;
 
 void setup() {
     initSerial();
     initWifi();
     initTime();
-
-    iotHubClient.begin(sslClient);
 }
 
 void loop() {
@@ -44,7 +42,7 @@ void initSerial() {
 
 void initWifi() {
     // Attempt to connect to Wifi network:
-    Serial.print("Attempting to connect to SSID: ");
+    Serial.print("\r\n\r\nAttempting to connect to SSID: ");
     Serial.println(ssid);
 
     // Connect to WPA/WPA2 network. Change this line if using open or WEP network:
@@ -54,7 +52,7 @@ void initWifi() {
       Serial.print(".");
     }
 
-    Serial.println("Connected to wifi");
+    Serial.println("\r\nConnected to wifi");
 }
 
 void initTime() {  
