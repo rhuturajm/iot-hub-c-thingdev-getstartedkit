@@ -11,20 +11,6 @@
 #include <AzureIoTProtocol_MQTT.h>
 #endif
 
-static WiFiClientSecure sslClient; // for ESP8266
-
-/*
- * The new version of AzureIoTHub library changed the AzureIoTHubClient signature.
- * As a temporary solution, we will test the definition of AzureIoTHubVersion, which is only defined 
- *    in the new AzureIoTHub library version. Once we totally deprecate the last version, we can take 
- *    the ‘#ifdef’ out.
- */
-#ifdef AzureIoTHubVersion
-static AzureIoTHubClient iotHubClient;
-#else
-AzureIoTHubClient iotHubClient(sslClient);
-#endif
-
 const char ssid[] = "[SSID]"; //  your WiFi SSID (name)
 const char pass[] = "[PASSWORD]";    // your WiFi password (use for WPA, or use as key for WEP)
 const char connectionString[] = "HostName=[HubName].azure-devices.net;DeviceId=[DeviceName];SharedAccessKey=[KEY]";
