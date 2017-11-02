@@ -10,7 +10,7 @@
 #include <Arduino.h>
 #include <time.h>
 
-#include "dht22.h"
+#include "sensor.h"
 #include "command_center.h"
 
 /* This sample uses the _LL APIs of iothub_client for example purposes.
@@ -121,7 +121,7 @@ static void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const unsign
 /*this function "links" IoTHub to the serialization library*/
 static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
 {
-    LogInfo("Command Recieved\r\n");
+    LogInfo("Command Received\r\n");
     IOTHUBMESSAGE_DISPOSITION_RESULT result;
     const unsigned char* buffer;
     size_t size;
@@ -156,7 +156,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
 
 void command_center_run(void)
 {
-    initDht();
+    initSensor();
 
     digitalWrite(redLedPin, redLedState);
     pinMode(redLedPin, OUTPUT);

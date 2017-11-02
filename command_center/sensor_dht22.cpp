@@ -5,7 +5,7 @@
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
 #include <DHT_U.h>
-#include "dht22.h"
+#include "sensor.h"
 
 
 #define DHTPIN            2         // Pin which is connected to the DHT sensor.
@@ -16,7 +16,7 @@ DHT_Unified dht(DHTPIN, DHTTYPE);
 uint32_t delayMS;
 uint32_t nextSampleAllowedMS = 0;
 
-void initDht(void) {
+void initSensor(void) {
   // Initialize device.
   dht.begin();
   Serial.println("DHTxx Unified Sensor Example");
