@@ -15,7 +15,7 @@
 #endif
 
 #include "sample.h"
-#include "samd/sample_init.h"
+#include "esp8266/sample_init.h"
 
 static char ssid[] = IOT_CONFIG_WIFI_SSID;
 static char pass[] = IOT_CONFIG_WIFI_PASSWORD;
